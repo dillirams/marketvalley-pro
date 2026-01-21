@@ -15,8 +15,8 @@ export default function Page() {
         }}
         font="bold"
       />
-      <div className="w-[1%]">
-        <IconButton Icon={User} count={3} onclick={() => alert("done")} />
+      <div className="">
+        <IconButton Icon={User} count={3} onclick={() => alert("done") } size={35} />
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 "use client";
 import { Button } from "@repo/ui/button";
+import { IconButton } from "@repo/ui/iconButton";
+import { User } from "lucide-react";
 
 export default function Page() {
   return (
@@ -13,6 +15,9 @@ export default function Page() {
         }}
         font="bold"
       />
+      <div className="w-[1%]">
+        <IconButton Icon={User} count={3} onclick={() => alert("done")} />
+      </div>
     </div>
   );
 }

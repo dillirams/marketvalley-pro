@@ -1,5 +1,5 @@
 import { IconButton } from "@repo/ui/iconButton";
-import { MessagesSquare } from "lucide-react";
+import { MessagesSquare, User } from "lucide-react";
 
 
 export function Navbar (){
@@ -10,7 +10,7 @@ export function Navbar (){
 
         <div className="flex ">
             <div>
-                <IconButton Icon={<MessagesSquare />} size={45}/>
+                <IconButton Icon={<User/>} size={45}/>
             </div>
             <div>profile</div>
         </div>

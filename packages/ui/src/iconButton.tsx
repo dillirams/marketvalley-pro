@@ -7,18 +7,13 @@ interface IconButtonProps {
   size: number;
 }
 
-export const IconButton = ({
-  Icon,
-  count,
-  onClick,
-  size,
-}: IconButtonProps) => {
+export const IconButton = ({ Icon, count, onClick, size }: IconButtonProps) => {
   const showBadge = typeof count === "number" && count > 0;
 
   return (
     <button
       onClick={onClick}
-      className="relative inline-flex items-center justify-center"
+      className="relative inline-flex items-center justify-center transition-transform duration-200 ease-in-out hover:scale-110"
       style={{ width: size, height: size }}
     >
       {/* Badge */}

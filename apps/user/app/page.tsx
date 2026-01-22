@@ -5,7 +5,7 @@ import { User } from "lucide-react";
 
 export default function Page() {
   return (
-    <div>
+    <div className="bg-background-main">
       <Button
         title="click"
         size="sm"

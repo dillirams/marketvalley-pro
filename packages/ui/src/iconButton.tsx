@@ -5,16 +5,23 @@ interface IconButtonProps {
   count?: number;
   onClick?: () => void;
   size: number;
+  label?: string;
 }
 
-export const IconButton = ({ Icon, count, onClick, size }: IconButtonProps) => {
+export const IconButton = ({
+  Icon,
+  count,
+  onClick,
+  size,
+  label,
+}: IconButtonProps) => {
   const showBadge = typeof count === "number" && count > 0;
 
   return (
     <button
       onClick={onClick}
-      className="relative inline-flex items-center justify-center transition-transform duration-200 ease-in-out hover:scale-110"
-      style={{ width: size, height: size }}
+      className="relative inline-flex flex-col items-center justify-center gap-1 transition-transform duration-200 ease-in-out hover:scale-110"
+      style={{ width: size, height: size + (label ? 18 : 0) }}
     >
       {/* Badge */}
       {showBadge && (
@@ -44,6 +51,13 @@ export const IconButton = ({ Icon, count, onClick, size }: IconButtonProps) => {
         size={size}
         className="text-gray-500 hover:text-black transition-colors duration-200"
       />
+
+      {/* Label */}
+      {label && (
+        <span className="text-[11px] text-gray-600 font-medium leading-none">
+          {label}
+        </span>
+      )}
     </button>
   );
 };

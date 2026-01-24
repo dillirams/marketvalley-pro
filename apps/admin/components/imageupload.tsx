@@ -1,3 +1,4 @@
+import { error } from "console";
 import { ImagesIcon } from "lucide-react";
 import React, { useState } from "react";
 import { FieldErrors, UseFormRegister } from "react-hook-form";
@@ -12,6 +13,7 @@ interface imageUploadType {
 const Imageupload = (props: imageUploadType) => {
   const hasErrors = props.errors[props.name];
   const [preview, setPreview] = useState<string>("");
+  const [errors, setErrors] = useState<string[]>([]);
 
   function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -19,6 +21,14 @@ const Imageupload = (props: imageUploadType) => {
 
     const url = URL.createObjectURL(file);
     setPreview(url);
+    if (file.size > props.size * 1024 * 1024) {
+      alert("file size cannot be above 2MB");
+      setErrors([...errors, "File size cannot be greater then 2MB"]);
+    }
+    if (file.type == "image/jpeg") {
+      alert("file has to be an image");
+      setErrors([...errors, "File type cannot be anything other then photo"]);
+    }
   }
 
   return (
@@ -68,6 +78,12 @@ const Imageupload = (props: imageUploadType) => {
       {hasErrors && (
         <p className="text-sm text-red-500">{String(hasErrors.message)}</p>
       )}
+      {errors &&
+        errors.map((mistake, key) => (
+          <p key={key} className="text-sm text-red-500">
+            {mistake}
+          </p>
+        ))}
     </div>
   );
 };

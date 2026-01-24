@@ -1,4 +1,6 @@
+//@ts-ignore
 import "@repo/ui/styles.css";
+//@ts-ignore
 import "./globals.css";
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
@@ -20,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
      
       <body className={geist.className}>
-         <Navbar/>
+        
         {children}</body>
     </html>
   );

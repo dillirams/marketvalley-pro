@@ -1,17 +1,24 @@
 import React from "react";
-import { UseFormRegister } from "react-hook-form";
-import { FieldErrors } from "react-hook-form";
+import { UseFormRegister, FieldErrors } from "react-hook-form";
 
 interface inputType {
   placeholder: string;
   label: string;
+  name: string;
   inputtype: string;
   register: UseFormRegister<any>;
   required: boolean;
   errors: FieldErrors<any>;
   maxlength?: number;
   minlength?: number;
+  size: "sm" | "md" | "lg";
 }
+
+const SIZE_STYLES = {
+  sm: "px-2 py-1.5 text-sm w-full",
+  md: "px-3 py-2 text-sm w-full",
+  lg: "px-4 py-3 text-base w-full",
+} as const;
 
 const Input = ({
   label,
@@ -22,43 +29,53 @@ const Input = ({
   maxlength,
   minlength,
   errors,
+  name,
+  size,
 }: inputType) => {
-  const hasErrors = errors[label];
+  const hasErrors = errors[name];
+
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-lg text-gray-700 font-bold">{label}</label>
+      <label className="text-md text-gray-700 font-medium">{label}</label>
 
       <input
-        {...register(label, {
-          required: `${label} is required`,
-          maxLength: {
-            value: maxlength!,
-            message: "max length should be " + maxlength,
-          },
-          minLength: {
-            value: minlength! | 5,
-            message: "min length should be " + minlength,
-          },
+        {...register(name, {
+          required: required ? `${label} is required` : false,
+          ...(maxlength && {
+            maxLength: {
+              value: maxlength,
+              message: `Max length should be ${maxlength}`,
+            },
+          }),
+          ...(minlength && {
+            minLength: {
+              value: minlength,
+              message: `Min length should be ${minlength}`,
+            },
+          }),
         })}
         type={inputtype}
         placeholder={placeholder}
-        className="
-      w-full
-      px-3 py-2
-      text-sm
-      border border-gray-300
-      rounded-md
-      bg-white
-      placeholder-gray-400
-      shadow-sm
-      focus:outline-none
-      focus:ring-2
-      focus:ring-blue-500
-      focus:border-blue-500
-      transition
-    "
+        className={`
+          w-full
+          border
+          rounded-md
+          bg-white
+          placeholder-gray-400
+          shadow-sm
+          transition
+          focus:outline-none
+          focus:ring-2
+          focus:ring-blue-500
+          focus:border-blue-500
+          ${SIZE_STYLES[size]}
+          ${hasErrors ? "border-red-400" : "border-gray-300"}
+        `}
       />
-      {hasErrors && <p className="text-red-500">{String(hasErrors.message)}</p>}
+
+      {hasErrors && (
+        <p className="text-sm text-red-500">{String(hasErrors.message)}</p>
+      )}
     </div>
   );
 };

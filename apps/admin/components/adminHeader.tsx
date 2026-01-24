@@ -106,7 +106,7 @@ const AdminHeader = ({
               <Button
                 title="View my shop"
                 click={handleShop}
-                size="sm"
+                size="md"
                 variant="primary"
                 font="bold"
               />

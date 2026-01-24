@@ -8,7 +8,8 @@ interface buttonType {
   endIcon?: React.FC;
   variant: "primary" | "secondary" | "tertiary";
   font: "light" | "normal" | "bold";
-  fullWidth?:boolean
+  fullWidth?: boolean;
+  type?: "submit";
 }
 
 const variantTypes = {
@@ -29,7 +30,8 @@ const fontVariant = {
 export const Button = (props: buttonType) => {
   return (
     <button
-      className={`${variantTypes[props.variant]} ${sizeTypes[props.size]} ${fontVariant[props.font]} hover:cursor-pointer ${props.fullWidth&& "w-full"} `}
+      type={props.type}
+      className={`${variantTypes[props.variant]} ${sizeTypes[props.size]} ${fontVariant[props.font]} hover:cursor-pointer ${props.fullWidth && "w-full"} `}
       onClick={props.click}
     >
       {props.title}

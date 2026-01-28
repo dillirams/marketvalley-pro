@@ -12,12 +12,18 @@ interface inputType {
   maxlength?: number;
   minlength?: number;
   size: "sm" | "md" | "lg";
+  label_size?: "sm" | "md" | "lg";
 }
 
 const SIZE_STYLES = {
   sm: "px-2 py-1.5 text-sm w-full",
   md: "px-3 py-2 text-sm w-full",
   lg: "px-4 py-3 text-base w-full",
+} as const;
+const LABEL_SIZE = {
+  sm: "text-md",
+  md: "text-xl",
+  lg: "text-2xl",
 } as const;
 
 const Input = ({
@@ -31,12 +37,17 @@ const Input = ({
   errors,
   name,
   size,
+  label_size,
 }: inputType) => {
   const hasErrors = errors[name];
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-md text-gray-700 font-medium">{label}</label>
+      <label
+        className={`${label_size ? LABEL_SIZE[label_size] : "text-md"} text-gray-700 font-semibold`}
+      >
+        {label}
+      </label>
 
       <input
         {...register(name, {

@@ -1,17 +1,17 @@
 "use client";
-import Image from "next/image";
-import Statistics from "../components/statistics";
-import { Weight, ChartNoAxesCombined } from "lucide-react";
-import DataCharts from "../components/dataCharts";
-import AdminHeaderClient from "./adminHeaderClient";
-import Item from "../components/item";
-import { image } from "../lib";
+import React from "react";
+import Item from "../../components/item";
+import { image } from "../../lib";
+import AdminHeaderClient from "../adminHeaderClient";
+import { SearchInput } from "@repo/ui/searchInput";
 
-export default function Page() {
+const Page = () => {
   return (
-    <main className="flex flex-col items-center min-h-screen md:p-24 justify-center">
+    <div className="flex flex-col min-h-screen pt-16 md:p-24">
       <AdminHeaderClient />
-      <h1>Hello world</h1>
+      <div>
+        <SearchInput reference={() => {}} onChange={() => {}} />
+      </div>
       <div className="grid grid-cols-3 gap-2 h-full w-full p-2">
         {" "}
         <Item
@@ -39,9 +39,8 @@ export default function Page() {
           title="pen"
         />
       </div>
-      <div className="w-full h-full md:h-[50%] md:w-[50%]">
-        <DataCharts />
-      </div>
-    </main>
+    </div>
   );
-}
+};
+
+export default Page;

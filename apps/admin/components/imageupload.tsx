@@ -25,7 +25,7 @@ const Imageupload = (props: imageUploadType) => {
       alert("file size cannot be above 2MB");
       setErrors([...errors, "File size cannot be greater then 2MB"]);
     }
-    if (file.type == "image/jpeg") {
+    if (!file.type.startsWith("image/")) {
       alert("file has to be an image");
       setErrors([...errors, "File type cannot be anything other then photo"]);
     }

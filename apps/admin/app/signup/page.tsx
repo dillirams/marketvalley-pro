@@ -26,7 +26,10 @@ const Page = () => {
   return (
     <div className="flex flex-col justify-center items-center h-screen w-screen ">
       <h1 className="flex"> Signup</h1>
-      <form onSubmit={handleSubmit(signup)} className="h-full w-full">
+      <form
+        onSubmit={handleSubmit(signup)}
+        className="flex flex-col h-[80%] w-[80%] md:h-[50%] md:w-[50%] gap-10 "
+      >
         <Input
           label="Your Name"
           placeholder="Enter your name"
@@ -38,6 +41,7 @@ const Page = () => {
           inputtype="text"
           name="userName"
           size="sm"
+          label_size="md"
         />
         <Input
           label="Shop Name"
@@ -71,7 +75,7 @@ const Page = () => {
         />
         <Button
           type={"submit"}
-          size="sm"
+          size="md"
           fullWidth={true}
           title="Submit"
           variant="primary"

@@ -12,9 +12,9 @@ interface ShopCartProps{
 }
 
 export function ShopCart(prop:ShopCartProps){
-    return <div className=" w-full grid justify-between rounded-xl border border-gray-200 md:border-0 bg-white p-2 md:p-3 space-y-2 md:space-y-3 ">
+    return <div className=" w-full h-full flex flex-col rounded-xl border border-gray-200 md:border-gray-300 bg-white p-2 md:p-3 space-y-2 md:space-y-3 ">
 
-        <div className="relative w-full h-24 md:h-28 overflow-hidden rounded-lg">
+        <div className="relative w-full aspect-[4/3] overflow-hidden rounded-lg bg-gray-100">
 
         {/* Rating badge */}
         <div
@@ -37,7 +37,7 @@ export function ShopCart(prop:ShopCartProps){
         <img
           src={prop.image}
           alt={prop.name}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover border border-gray-500 rounded-xl md:border-0"
         />
       </div>
         <div className="space-y-1 ">
@@ -46,7 +46,7 @@ export function ShopCart(prop:ShopCartProps){
               <p className="text-[12px] md:text-xs text-gray-600 flex items-center gap-1"> <MapPin size={10} /> {prop.locaton}</p>
             <p className="text-[12px] md:text-xs text-gray-600 flex items-center gap-1"><Phone size={10} />{prop.contact}</p>
         </div>
-         <div className="">
+         <div className="mt-auto pt-2">
             {prop.button}
          </div>
     </div>

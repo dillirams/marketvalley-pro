@@ -21,7 +21,7 @@ export default function Page() {
         />
       </div>
       <div className="w-full h-full md:h-[50%] md:w-[50%]">
-        <DataCharts />
+        {/* <DataCharts /> */}
       </div>
     </main>
   );

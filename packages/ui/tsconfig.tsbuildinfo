@@ -1,1 +1,1 @@
-{"root":["./src/button.tsx","./src/iconButton.tsx","./src/input.tsx","./src/logo.tsx","./src/searchInput.tsx","./src/shopcart.tsx","./src/upload.tsx"],"version":"5.9.2"}
+{"root":["./src/button.tsx","./src/iconButton.tsx","./src/input.tsx","./src/itemCart.tsx","./src/logo.tsx","./src/searchInput.tsx","./src/shopcart.tsx","./src/upload.tsx"],"version":"5.9.2"}

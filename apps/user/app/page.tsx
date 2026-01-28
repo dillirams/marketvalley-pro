@@ -9,14 +9,14 @@ export default function Page() {
       <Button
         title="click"
         size="sm"
-        variant="primary"
+        variant="tertiary"
         click={() => {
           alert("clciked");
         }}
         font="bold"
       />
       <div className="">
-        <IconButton Icon={User} count={3} onclick={() => alert("done") } size={35} />
+  
       </div>
     </div>
   );
